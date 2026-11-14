@@ -18,6 +18,7 @@ export default async function Home() {
         In progress. Every run below is hand-made or recorded on a local sandbox. No strategy has run on mainnet, and nothing here is a live strategy.
       </p>
       <p className="mt-4"><a className="pill inline-block bg-lavender px-4 py-1" href="/journey">See the whole process: a guided simulation on recorded sandbox data</a></p>
+      <p className="mt-2"><a className="pill inline-block bg-mint px-4 py-1" href="/strategies/sandbox-run">See the recorded sandbox strategy and try a simulated join</a></p>
       <h2 className="mt-8 text-xl font-bold">Open a run and see the check</h2>
       <ul className="mt-3 space-y-3">
         {cards.map((c) => (

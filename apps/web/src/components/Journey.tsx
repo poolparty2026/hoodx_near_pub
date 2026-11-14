@@ -101,6 +101,7 @@ export function Journey({ verdict }: { verdict: ReactNode }) {
   return (
     <div>
       <p className="mt-3 rounded-lg bg-butter px-3 py-1.5 text-xs font-bold text-navy" data-testid="banner">{BANNER}</p>
+      <p className="mt-2 text-sm"><a className="underline" href="/strategies/sandbox-run">Strategy details and a simulated join</a></p>
       <ol className="mt-4 flex flex-wrap gap-1 text-xs" aria-label="Steps">
         {TITLES.map((t, i) => (
           <li key={t} aria-current={i === step ? "step" : undefined} className={`pill px-2 py-0.5 ${i === step ? "bg-mint" : i < step ? "bg-lavender" : "bg-surface-2 text-ink"}`}>{i + 1}</li>

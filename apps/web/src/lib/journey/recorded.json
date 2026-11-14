@@ -40,5 +40,24 @@
    "leftPoint": 400812,
    "rightPoint": 401812
   }
- ]
+ ],
+ "creator": "creator.test.near",
+ "agent": "agent.test.near",
+ "deliverer": "deliverer.test.near",
+ "pool": "usdc.test.near|wrap.test.near|100",
+ "quoteToken": "usdc.test.near",
+ "maxPrincipal": "500000000",
+ "limits": {
+  "max_slippage_bps": 50,
+  "max_swap_slippage_bps": 60,
+  "max_swap_step_bps": 6000,
+  "max_observation_drift_bps": 30,
+  "max_observation_age_blocks": "20",
+  "min_range_width_bps": 1000,
+  "max_range_width_bps": 2000,
+  "min_action_interval_s": "600",
+  "max_actions_per_24h": 6
+ },
+ "runStatusFirst": "Running",
+ "runStatusLast": "Closed"
 }
