@@ -1,0 +1,724 @@
+{
+ "note": "Confirmation walks (EC-R30) and pairing (EC-C158), shared with the Rust tests. Rules: `rules`. Each observation is [block, condition, settled_from_block]; its state is `base_state` with `conditions[condition]` applied and `block` set. After each observation: `run` = nextConfirmRun(state with confirmFromBlock null, previous run or null at the start, settled_from_block) (nextConfirmRun reads the previous run from its argument, never from the state), and `decision` = evaluate(state with confirmFromBlock = run.from_block, or null when run is null). The contract's own span checks (O1 > O2 refused, checked additions near u64::MAX) are contract tests (EC-C131), not vectors here. Amounts are decimal strings.",
+ "rules": {
+  "version": 1,
+  "pool": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1|wrap.near|100",
+  "quote_token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+  "range": {
+   "width_bps": 800,
+   "centre": "mid"
+  },
+  "take_profit_bps": 300,
+  "stop_loss_bps": 1000,
+  "close_after_s": 432000,
+  "salt": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+ },
+ "base_state": {
+  "nowS": 10000,
+  "startedAtS": 1000,
+  "point": 0,
+  "valuationPoint": 0,
+  "position": {
+   "left": -400,
+   "right": 400
+  },
+  "closedBy": null,
+  "principal": "250000000",
+  "holdings": {
+   "quote": "250000000",
+   "base": "0"
+  },
+  "fees": {
+   "quote": "0",
+   "base": "0"
+  }
+ },
+ "conditions": {
+  "none": {},
+  "sl": {
+   "holdings": {
+    "quote": "1",
+    "base": "0"
+   }
+  },
+  "tp": {
+   "fees": {
+    "quote": "1000000000",
+    "base": "0"
+   }
+  },
+  "sltp": {
+   "holdings": {
+    "quote": "1",
+    "base": "0"
+   },
+   "fees": {
+    "quote": "1000000000",
+    "base": "0"
+   }
+  },
+  "time": {
+   "nowS": 433000
+  },
+  "latched_sl": {
+   "closedBy": "stop_loss"
+  },
+  "latched_sl_tp_live": {
+   "closedBy": "stop_loss",
+   "fees": {
+    "quote": "1000000000",
+    "base": "0"
+   }
+  }
+ },
+ "walks": [
+  {
+   "name": "close at the margin, not one block before",
+   "obs": [
+    [
+     1000,
+     "sl",
+     0
+    ],
+    [
+     1020,
+     "sl",
+     0
+    ],
+    [
+     1039,
+     "sl",
+     0
+    ],
+    [
+     1040,
+     "sl",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "true, false, true restarts",
+   "obs": [
+    [
+     1000,
+     "sl",
+     0
+    ],
+    [
+     1030,
+     "none",
+     0
+    ],
+    [
+     1035,
+     "sl",
+     0
+    ],
+    [
+     1075,
+     "sl",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": null,
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1035,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1035,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "span at CONFIRM_MAX_BLOCKS kept, one above restarts",
+   "obs": [
+    [
+     1000,
+     "tp",
+     0
+    ],
+    [
+     1400,
+     "tp",
+     0
+    ],
+    [
+     1401,
+     "tp",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "take_profit"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "take_profit"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "take_profit"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1401,
+      "reason": "take_profit"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    }
+   ]
+  },
+  {
+   "name": "span one above CONFIRM_MAX_BLOCKS restarts, then closes",
+   "obs": [
+    [
+     1000,
+     "sl",
+     0
+    ],
+    [
+     1401,
+     "sl",
+     0
+    ],
+    [
+     1441,
+     "sl",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1401,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1401,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "take profit then stop loss keeps O1",
+   "obs": [
+    [
+     1000,
+     "tp",
+     0
+    ],
+    [
+     1050,
+     "sl",
+     0
+    ],
+    [
+     1089,
+     "sl",
+     0
+    ],
+    [
+     1090,
+     "sl",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "take_profit"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "both true during a take-profit run keeps O1, reason stop loss",
+   "obs": [
+    [
+     1000,
+     "tp",
+     0
+    ],
+    [
+     1050,
+     "sltp",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "take_profit"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "time during a stop-loss run keeps O1",
+   "obs": [
+    [
+     1000,
+     "sl",
+     0
+    ],
+    [
+     1040,
+     "time",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "time"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "time"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a payout makes O1 unsettled",
+   "obs": [
+    [
+     1000,
+     "sl",
+     0
+    ],
+    [
+     1060,
+     "sl",
+     1050
+    ],
+    [
+     1100,
+     "sl",
+     1050
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1060,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1060,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "O1 exactly at the settled block is kept",
+   "obs": [
+    [
+     1050,
+     "sl",
+     0
+    ],
+    [
+     1090,
+     "sl",
+     1050
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1050,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1050,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "latched retry confirms on the latch",
+   "obs": [
+    [
+     2000,
+     "latched_sl",
+     0
+    ],
+    [
+     2040,
+     "latched_sl",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 2000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 2000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "time alone needs its own margin",
+   "obs": [
+    [
+     3000,
+     "time",
+     0
+    ],
+    [
+     3039,
+     "time",
+     0
+    ],
+    [
+     3040,
+     "time",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 3000,
+      "reason": "time"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 3000,
+      "reason": "time"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 3000,
+      "reason": "time"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "time"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the latch wins over a live take profit",
+   "obs": [
+    [
+     2000,
+     "latched_sl_tp_live",
+     0
+    ],
+    [
+     2040,
+     "latched_sl_tp_live",
+     0
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 2000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 2000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  },
+  {
+   "name": "settled-from at O1 + 1 restarts",
+   "obs": [
+    [
+     1000,
+     "sl",
+     0
+    ],
+    [
+     1040,
+     "sl",
+     1001
+    ],
+    [
+     1080,
+     "sl",
+     1001
+    ]
+   ],
+   "expect": [
+    {
+     "run": {
+      "from_block": 1000,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1040,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "hold"
+     }
+    },
+    {
+     "run": {
+      "from_block": 1040,
+      "reason": "stop_loss"
+     },
+     "decision": {
+      "kind": "close",
+      "reason": "stop_loss"
+     }
+    }
+   ]
+  }
+ ],
+ "pairing": [
+  {
+   "swap_result_ns": "0",
+   "open_start_ns": "0",
+   "paired": true
+  },
+  {
+   "swap_result_ns": "0",
+   "open_start_ns": "3599999999999",
+   "paired": true
+  },
+  {
+   "swap_result_ns": "0",
+   "open_start_ns": "3600000000000",
+   "paired": false
+  },
+  {
+   "swap_result_ns": "10",
+   "open_start_ns": "9",
+   "paired": false
+  },
+  {
+   "swap_result_ns": "1700000000000000000",
+   "open_start_ns": "1700003599999999999",
+   "paired": true
+  }
+ ]
+}

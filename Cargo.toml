@@ -1,0 +1,16 @@
+# Cargo workspace for NEAR contracts. The strategy contract is added after the
+# design is cleared (D16; cleared 9 November 2026, D52). Spikes under spikes/ are separate workspaces.
+[workspace]
+resolver = "2"
+members = ["contracts/strategy", "contracts/strategy-sandbox"]
+# Root cargo commands build only the contract; the sandbox crate runs through its run.sh.
+default-members = ["contracts/strategy"]
+exclude = ["spikes"]
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true

@@ -1,0 +1,22 @@
+{
+  "name": "@poolside/deliverer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "start": "node src/main.ts"
+  },
+  "dependencies": {
+    "@poolside/near": "workspace:*",
+    "@poolside/rules": "workspace:*",
+    "@poolside/seal": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2",
+    "vitest": "4.1.12"
+  }
+}

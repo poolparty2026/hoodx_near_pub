@@ -1,0 +1,19 @@
+:root {
+  /* hoodx brand tokens, draft 2. Colour values are unchanged from the October 2026 overview. */
+  --hx-navy: #2B2D5B; --hx-mint: #7ED9C3; --hx-lavender: #B9A6F5; --hx-peach: #FFC9B5; --hx-butter: #FFE9A0;
+  --hx-sky: #BFE6FF; --hx-pink: #FF8FA8; --hx-cream: #FFFAF3; --hx-muted: #6B6D8F; --hx-white: #FFFFFF;
+  --hx-mint-tint: #E6F7F2; --hx-lavender-tint: #EFEAFD; --hx-peach-tint: #FFEFE8; --hx-butter-tint: #FFF6D6;
+  /* Fee split (fixed). No number is shown until gate 5 is settled. */
+  --hx-split-joiners: var(--hx-mint); --hx-split-creator: var(--hx-lavender); --hx-split-hoodx: var(--hx-peach);
+  --hx-outline: 2px solid var(--hx-navy); --hx-radius: 12px; --hx-radius-pill: 999px;
+  --hx-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Light theme (print, README art, marketing) */
+  --bg: var(--hx-cream); --surface: var(--hx-white); --text: var(--hx-navy);
+  --text-muted: var(--hx-muted); --line: var(--hx-navy); --good: var(--hx-navy); --bad: var(--hx-navy);
+}
+[data-theme="dark"] {
+  --bg: #1C1D3D; --surface: #2B2D5B; --surface-2: #3A3C6E; --text: #FFFAF3;
+  --text-muted: #A9AACB; --line: #4A4C80; --good: var(--hx-mint); --bad: var(--hx-pink); --warn: var(--hx-butter);
+}
+body { background: var(--bg); color: var(--text); font-family: var(--hx-font); }
+.hx-num { font-variant-numeric: tabular-nums; }

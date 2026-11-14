@@ -1,0 +1,15 @@
+# Gate 3 spike, part B: Rhea DCL behaviour in a local sandbox.
+# Uses the exact DCL WASM deployed on mainnet (dclv2.ref-labs.near, v2.4.2),
+# fetched with view_code on 6 Nov 2026, plus the test token and sink from
+# spikes/gate3-access-keys. Throwaway code; findings go to docs/gates/.
+[package]
+name = "gate3-rhea-dcl"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dev-dependencies]
+near-workspaces = "0.24.0"
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+serde_json = "1"

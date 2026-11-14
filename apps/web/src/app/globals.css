@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Brand tokens: .claude/skills/hoodx-brand/assets/tokens.css, dark theme (derived for the app). */
+:root {
+  --hx-navy: #2b2d5b; --hx-mint: #7ed9c3; --hx-lavender: #b9a6f5; --hx-peach: #ffc9b5;
+  --hx-butter: #ffe9a0; --hx-sky: #bfe6ff; --hx-pink: #ff8fa8; --hx-cream: #fffaf3;
+  --bg: #1c1d3d; --surface: #2b2d5b; --surface-2: #3a3c6e; --text: #fffaf3;
+  --text-muted: #a9aacb; --line: #4a4c80; --good: var(--hx-mint); --bad: var(--hx-pink); --warn: var(--hx-butter);
+}
+
+@theme inline {
+  --color-bg: var(--bg); --color-surface: var(--surface); --color-surface-2: var(--surface-2);
+  --color-ink: var(--text); --color-muted: var(--text-muted); --color-line: var(--line);
+  --color-mint: var(--hx-mint); --color-lavender: var(--hx-lavender); --color-peach: var(--hx-peach);
+  --color-butter: var(--hx-butter); --color-sky: var(--hx-sky); --color-pink: var(--hx-pink);
+  --color-navy: var(--hx-navy);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Light theme (brand tokens, cream page, navy ink) when the visitor's system asks for it. Pastels stay fills with navy text. */
+@media (prefers-color-scheme: light) {
+  :root { --bg: #fffaf3; --surface: #ffffff; --surface-2: #efeafd; --text: #2b2d5b; --text-muted: #6b6d8f; --line: #2b2d5b; --focus: #2b2d5b; }
+}
+:root { --focus: #ffe9a0; }
+@media (prefers-color-scheme: light) { :root { --focus: #2b2d5b; } }
+a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 12px; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; }
+.pill { border-radius: 999px; border: 2px solid var(--hx-navy); font-weight: 700; padding: 2px 12px; color: var(--hx-navy); }
+
+/* Hoody keeps a 2px cream halo on the dark UI (hoodx-brand, dark UI); the light theme has none. */
+.hoody { filter: drop-shadow(0 0 1.5px #fffaf3) drop-shadow(0 0 1.5px #fffaf3); }
+@media (prefers-color-scheme: light) { .hoody { filter: none; } }

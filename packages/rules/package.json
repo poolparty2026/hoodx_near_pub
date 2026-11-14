@@ -1,0 +1,23 @@
+{
+  "name": "@poolside/rules",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./testing": "./src/testing.ts" },
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@noble/ciphers": "2.4.0",
+    "@noble/hashes": "2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@vitest/coverage-v8": "4.1.12",
+    "fast-check": "4.10.2",
+    "typescript": "7.0.2",
+    "vitest": "4.1.12"
+  }
+}

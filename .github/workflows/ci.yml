@@ -1,0 +1,61 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+permissions:
+  contents: read
+jobs:
+  typescript:
+    runs-on: ubuntu-24.04
+    steps:
+      # Actions are pinned to commit SHAs so a moved tag can't change what runs.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1 (commit, not tag object)
+        with: { version: 10.28.0 }
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with: { node-version: 22.23.4, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm coverage
+      # Independent check of the shared swap vectors against the true price (EC-R17).
+      - run: python3 -I packages/rules/test/vectors/check_swap.py packages/rules/test/vectors/swap.json
+      - run: python3 -I packages/rules/test/vectors/check_target_range.py packages/rules/test/vectors/target_range.json
+      - run: python3 -I packages/rules/test/vectors/check_number_spellings.py packages/rules/test/vectors/number_spellings.json
+      - run: python3 -I packages/rules/test/vectors/check_amounts.py packages/rules/test/vectors/amounts.json
+      - run: python3 -I packages/rules/test/vectors/check_swap_floor.py packages/rules/test/vectors/swap_floor.json
+      - run: python3 -I packages/rules/test/vectors/check_swap_floor.py packages/rules/test/vectors/swap_floor_wide.json
+      # All dependencies, dev included: they run in CI and on developer machines.
+      - run: pnpm audit --audit-level high
+  rust:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # The runner's rustup, pinned to the toolchain the contract is developed with; no third-party action.
+      - run: rustup toolchain install 1.97.0 --profile minimal --component clippy,rustfmt --target wasm32-unknown-unknown && rustup default 1.97.0
+      - run: cargo fmt -p strategy -- --check
+      # --locked: CI uses exactly the committed Cargo.lock (security L-5).
+      - run: cargo clippy -p strategy --all-targets --locked -- -D warnings
+      - run: cargo clippy -p strategy --all-targets --features sandbox --locked -- -D warnings
+      - run: cargo test -p strategy --locked
+      - run: cargo test -p strategy --features sandbox --locked
+      # --cfg near is required, or LIMIT: messages compile to a bare trap (near-contract skill).
+      - run: RUSTFLAGS="--cfg near" cargo build -p strategy --target wasm32-unknown-unknown --release --locked
+      # The release wasm carries the mainnet constants and no sandbox account (security L-4, contract review L5).
+      - run: |
+          W=target/wasm32-unknown-unknown/release/strategy.wasm
+          grep -q "dclv2.ref-labs.near" "$W"
+          # An explicit exit, not `! grep`, which bash -e ignores (contract re-review Info).
+          if grep -q "test.near" "$W"; then echo "release wasm contains a sandbox account" >&2; exit 1; fi
+  secrets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { fetch-depth: 0 }
+      # Scans every blob in the object database (binary files, merges and
+      # -diff attributes included) and self-tests the scan first (re-audit M-1, L-1, L-2).
+      - name: Self-test the secret scan
+        run: scripts/secret-scan.test.sh
+      - name: Refuse secrets anywhere in the pushed history, not just the tip
+        run: scripts/secret-scan.sh

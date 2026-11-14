@@ -1,0 +1,13 @@
+target/
+node_modules/
+.next/
+.env*
+!.env.example
+coverage/
+dist/
+*.tsbuildinfo
+contracts/strategy-sandbox/wasm/*.wasm
+
+# graphify (local knowledge graph; rebuild with `graphify update .`)
+graphify-out/
+.testnet/

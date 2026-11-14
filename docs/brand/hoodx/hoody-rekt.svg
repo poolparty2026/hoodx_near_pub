@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" width="240" height="280" role="img" aria-label="Hoody, the hoodx mascot (rekt)">
+<defs><linearGradient id="garekt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".06"/></linearGradient></defs>
+
+<ellipse cx="120" cy="264" rx="70" ry="9" fill="#2B2D5B" opacity=".1"/>
+<ellipse cx="88" cy="244" rx="22" ry="13" fill="#FF8FA8" stroke="#2B2D5B" stroke-width="5"/><ellipse cx="152" cy="244" rx="22" ry="13" fill="#FF8FA8" stroke="#2B2D5B" stroke-width="5"/>
+<ellipse cx="30" cy="176" rx="16" ry="22" fill="#FF8FA8" stroke="#2B2D5B" stroke-width="5"/><ellipse cx="210" cy="176" rx="16" ry="22" fill="#FF8FA8" stroke="#2B2D5B" stroke-width="5"/>
+<path d="M120 22 C104 60 40 120 40 176 C40 222 78 248 120 248 C162 248 200 222 200 176 C200 120 136 60 120 22Z" fill="#FF8FA8" stroke="#2B2D5B" stroke-width="6" stroke-linejoin="round"/>
+<path d="M120 22 C104 60 40 120 40 176 C40 222 78 248 120 248 C162 248 200 222 200 176 C200 120 136 60 120 22Z" fill="url(#garekt)"/>
+<path d="M120 22 C104 60 42 116 41 176 C70 214 170 214 199 176 C198 116 136 60 120 22Z" fill="#2B2D5B"/>
+<path d="M120 36 C106 68 58 118 56 168" fill="none" stroke="#B9A6F5" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+<ellipse cx="120" cy="160" rx="66" ry="50" fill="#FF8FA8" stroke="#B9A6F5" stroke-width="5"/>
+<ellipse cx="120" cy="160" rx="66" ry="50" fill="url(#garekt)"/>
+<ellipse cx="66" cy="180" rx="11" ry="6" fill="#FF9FB2" opacity=".85"/><ellipse cx="174" cy="180" rx="11" ry="6" fill="#FF9FB2" opacity=".85"/>
+<circle cx="94" cy="156" r="15" fill="#2B2D5B"/><circle cx="146" cy="156" r="15" fill="#2B2D5B"/><circle cx="98" cy="150" r="5.5" fill="#fff"/><circle cx="150" cy="150" r="5.5" fill="#fff"/><path d="M82 176 Q80 190 86 196 M158 176 Q160 190 154 196" fill="none" stroke="#BFE6FF" stroke-width="5" stroke-linecap="round"/><path d="M106 192 Q120 180 134 192" fill="none" stroke="#2B2D5B" stroke-width="4" stroke-linecap="round"/><path d="M106 214 h-6 v22 h6 M134 214 h6 v22 h-6" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="120" cy="225" r="4.5" fill="#fff"/></svg>

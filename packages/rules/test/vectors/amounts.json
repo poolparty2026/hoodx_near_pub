@@ -1,0 +1,369 @@
+{
+ "note": "Record amounts and timestamps as decimal strings (EC-R25). u128 and u64: digits only, no sign, spaces or leading zeros, at most the type's maximum. ns_to_s: read as u64, then floor division by 10^9. Results are filled by the TypeScript test generator and checked independently by check_amounts.py.",
+ "cases": [
+  {
+   "fn": "u128",
+   "input": "0",
+   "result": {
+    "value": "0"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1",
+   "result": {
+    "value": "1"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "250000000",
+   "result": {
+    "value": "250000000"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "340282366920938463463374607431768211455",
+   "result": {
+    "value": "340282366920938463463374607431768211455"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "340282366920938463463374607431768211456",
+   "result": {
+    "error": "STATE: value must fit in u128"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": " 1",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1 ",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "0x10",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "0b1",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "+5",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "-1",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "007",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1.0",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1e2",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1111111111111111111111111111111111111111",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "0",
+   "result": {
+    "value": "0"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1",
+   "result": {
+    "value": "1"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "250000000",
+   "result": {
+    "value": "250000000"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "18446744073709551615",
+   "result": {
+    "value": "18446744073709551615"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "18446744073709551616",
+   "result": {
+    "error": "STATE: value must fit in u64"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": " 1",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1 ",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "0x10",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "0b1",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "+5",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "-1",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "007",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1.0",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1e2",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1111111111111111111111111111111111111111",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "0",
+   "result": {
+    "value": "0"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "999999999",
+   "result": {
+    "value": "0"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "1000000000",
+   "result": {
+    "value": "1"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "1762400000999999999",
+   "result": {
+    "value": "1762400000"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "18446744073709551615",
+   "result": {
+    "value": "18446744073"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "18446744073709551616",
+   "result": {
+    "error": "STATE: value must fit in u64"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "-1",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "+5",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "007",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "1e9",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1\n",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "\n1",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "1\t",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u128",
+   "input": "١",
+   "result": {
+    "error": "STATE: value must be a decimal u128 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1\n",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "\n1",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "1\t",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "u64",
+   "input": "١",
+   "result": {
+    "error": "STATE: value must be a decimal u64 without sign, spaces or leading zeros"
+   }
+  },
+  {
+   "fn": "ns_to_s",
+   "input": "1999999999",
+   "result": {
+    "value": "1"
+   }
+  }
+ ]
+}

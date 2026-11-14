@@ -1,0 +1,173 @@
+[
+ {
+  "tier": 2000,
+  "width_bps": 50,
+  "centre": -401452,
+  "range": {
+   "left": -401480,
+   "right": -401400
+  }
+ },
+ {
+  "tier": 2000,
+  "width_bps": 51,
+  "centre": -1,
+  "range": {
+   "left": -40,
+   "right": 40
+  }
+ },
+ {
+  "tier": 10000,
+  "width_bps": 401,
+  "centre": -401452,
+  "range": {
+   "left": -401800,
+   "right": -401200
+  }
+ },
+ {
+  "tier": 400,
+  "width_bps": 77,
+  "centre": -7,
+  "range": {
+   "left": -48,
+   "right": 32
+  }
+ },
+ {
+  "tier": 2000,
+  "width_bps": 50,
+  "centre": -30,
+  "range": {
+   "left": -80,
+   "right": 0
+  }
+ },
+ {
+  "tier": 2000,
+  "width_bps": 50,
+  "centre": -65,
+  "range": {
+   "left": -120,
+   "right": -40
+  }
+ },
+ {
+  "tier": 1000,
+  "width_bps": 50,
+  "centre": -45,
+  "range": {
+   "left": -80,
+   "right": -20
+  }
+ },
+ {
+  "tier": 1000,
+  "width_bps": 80,
+  "centre": -401455,
+  "range": {
+   "left": -401500,
+   "right": -401400
+  }
+ },
+ {
+  "tier": 400,
+  "width_bps": 50,
+  "centre": -41,
+  "range": {
+   "left": -72,
+   "right": -16
+  }
+ },
+ {
+  "tier": 2000,
+  "width_bps": 800,
+  "centre": 401440,
+  "range": {
+   "left": 401040,
+   "right": 401840
+  }
+ },
+ {
+  "tier": 100,
+  "width_bps": 800,
+  "centre": -401452,
+  "range": {
+   "left": -401852,
+   "right": -401052
+  }
+ },
+ {
+  "tier": 10000,
+  "width_bps": 5000,
+  "centre": -797400,
+  "range": {
+   "left": -800000,
+   "right": -794800
+  }
+ },
+ {
+  "tier": 10000,
+  "width_bps": 5000,
+  "centre": -797500,
+  "range": {
+   "left": -800000,
+   "right": -795000
+  }
+ },
+ {
+  "tier": 10000,
+  "width_bps": 5000,
+  "centre": -797501,
+  "range": null
+ },
+ {
+  "tier": 100,
+  "width_bps": 800,
+  "centre": -400,
+  "range": {
+   "left": -800,
+   "right": 0
+  }
+ },
+ {
+  "tier": 100,
+  "width_bps": 800,
+  "centre": 400,
+  "range": {
+   "left": 0,
+   "right": 800
+  }
+ },
+ {
+  "tier": 2000,
+  "width_bps": 80,
+  "centre": 40,
+  "range": {
+   "left": 0,
+   "right": 80
+  }
+ },
+ {
+  "tier": 1000,
+  "width_bps": 50,
+  "centre": -30,
+  "range": {
+   "left": -60,
+   "right": 0
+  }
+ },
+ {
+  "tier": 2000,
+  "width_bps": 50,
+  "centre": 799990,
+  "range": null
+ },
+ {
+  "tier": 2000,
+  "width_bps": 50,
+  "centre": -800000,
+  "range": null
+ }
+]

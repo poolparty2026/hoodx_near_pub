@@ -1,0 +1,19 @@
+[package]
+name = "strategy-sandbox"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Slice 2b: the strategy's real wasm against the mainnet DCL and wrap.near code in a local sandbox.
+# Run: ./run.sh (fetches the pinned wasm and near-sandbox binary, builds the sandbox wasm, then runs
+# the tests). Not a default workspace member and not in the default CI job. near-workspaces'
+# `install` feature is off, so no build script downloads an unchecked binary; the tests refuse to
+# start unless NEAR_SANDBOX_BIN_PATH names the pinned one.
+[dev-dependencies]
+near-workspaces = { version = "0.24.0", default-features = false, features = ["rustls"] }
+sha2 = "=0.10.9"
+bs58 = "=0.5.1"
+hex = "=0.4.3"
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+serde_json = "1"

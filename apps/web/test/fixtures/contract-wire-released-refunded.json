@@ -1,0 +1,37 @@
+{
+  "get_key_params_after_deliver": {
+    "deliverer": "deliverer.test.near",
+    "escrow_total": "0",
+    "key_delivery_window_ns": "3600000000000",
+    "key_price": "100000000000000000000000",
+    "max_key_sales": 20,
+    "near_owed_total": "0",
+    "sold": 1
+  },
+  "get_key_params_after_refund": {
+    "deliverer": "deliverer.test.near",
+    "escrow_total": "0",
+    "key_delivery_window_ns": "3600000000000",
+    "key_price": "100000000000000000000000",
+    "max_key_sales": 20,
+    "near_owed_total": "0",
+    "sold": 2
+  },
+  "get_key_sale_refunded": {
+    "bought_at_ns": "1794678828873457813",
+    "buyer": "carol.test.near",
+    "buyer_pubkey": "0101010101010101010101010101010101010101010101010101010101010101",
+    "price": "100000000000000000000000",
+    "sealed_key": null,
+    "state": "Refunded"
+  },
+  "get_key_sale_released": {
+    "bought_at_ns": "1794678826264345507",
+    "buyer": "bob.test.near",
+    "buyer_pubkey": "0101010101010101010101010101010101010101010101010101010101010101",
+    "price": "100000000000000000000000",
+    "sealed_key": "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+    "state": "Released"
+  },
+  "provenance": "Real serde_json output of the strategy wasm (sandbox build), read with near-workspaces view calls. Test: contracts/strategy-sandbox/tests/keys.rs keys_on_the_real_wasm, run with POOLSIDE_DUMP_WIRE set, on a tree whose HEAD was 62f3e605240e8a5c3a0506920f92eb6c16556b1c. Sandbox accounts and sandbox time. Fixture for apps/web."
+}

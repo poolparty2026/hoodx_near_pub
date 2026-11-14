@@ -1,0 +1,24 @@
+{
+  "name": "@poolside/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "start": "node src/main.ts"
+  },
+  "dependencies": {
+    "@poolside/near": "workspace:*",
+    "@poolside/rules": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "fast-check": "4.10.2",
+    "typescript": "7.0.2",
+    "vitest": "4.1.12"
+  }
+}

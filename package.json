@@ -1,0 +1,11 @@
+{
+  "name": "poolside-near",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "coverage": "pnpm -r coverage"
+  }
+}

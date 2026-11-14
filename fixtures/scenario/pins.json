@@ -1,0 +1,9 @@
+{
+  "base_token": "wrap.test.near",
+  "dcl_contract": "dcl.test.near",
+  "note": "A local sandbox, not mainnet: these constants pin what the recording was made against.",
+  "pool": "usdc.test.near|wrap.test.near|100",
+  "quote_token": "usdc.test.near",
+  "strategy_account": "strategy-1.test.near",
+  "strategy_code_hash": "G657mUE1vStMfADi9nph5fnQqQEqSvPhVNdmxfMuhAc7"
+}

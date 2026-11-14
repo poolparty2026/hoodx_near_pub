@@ -1,0 +1,21 @@
+{
+  "name": "@poolside/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage",
+    "quote": "node quote.ts"
+  },
+  "dependencies": {
+    "near-api-js": "7.5.3",
+    "@poolside/rules": "workspace:*",
+    "@poolside/seal": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2"
+  }
+}

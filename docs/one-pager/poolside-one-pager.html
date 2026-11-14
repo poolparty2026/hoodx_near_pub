@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Poolside on NEAR</title>
+<link rel="stylesheet" href="../../.claude/skills/poolside-brand/assets/tokens.css">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 9pt; line-height: 1.38; font-family: Helvetica, Arial, "Liberation Sans", sans-serif; }
+  .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; background: var(--ps-cream); padding: 0 15mm; }
+  .stripe { position: absolute; top: 0; left: 0; right: 0; height: 3.2mm; display: flex; }
+  .stripe i { display: block; height: 100%; }
+  .stripe i:nth-child(1) { width: 55%; background: var(--ps-mint); }
+  .stripe i:nth-child(2) { width: 25%; background: var(--ps-lavender); }
+  .stripe i:nth-child(3) { width: 20%; background: var(--ps-peach); }
+
+  header.top { display: flex; align-items: center; gap: 7px; padding-top: 7mm; font-weight: 700; font-size: 10.5pt; }
+  header.top img { width: 22px; }
+
+  .hero { display: flex; align-items: center; gap: 6mm; margin-top: 1mm; position: relative; }
+  .hero .text { flex: 1; }
+  .eyebrow { color: var(--ps-muted); font-weight: 700; font-size: 9pt; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 1mm; }
+  h1 { font-size: 36pt; line-height: 1; margin: 0 0 3mm; letter-spacing: -.02em; }
+  .pitch { font-weight: 700; font-style: oblique; font-size: 12pt; line-height: 1.35; margin: 0 0 4mm; max-width: 112mm; }
+  .pill { display: inline-block; background: var(--ps-butter); border: var(--ps-outline); border-radius: var(--ps-radius-pill); padding: 1.6mm 6mm; font-weight: 700; font-size: 9pt; }
+  .hero .art { width: 44mm; height: 44mm; position: relative; flex: none; }
+  .hero .art .blob { position: absolute; inset: -4mm -10mm -2mm 2mm; background: var(--ps-lavender-tint); border-radius: 50%; }
+  .hero .art img.pooly { position: absolute; width: 35mm; left: 5mm; top: 2mm; }
+  .spark { position: absolute; }
+
+  h2 { display: flex; align-items: center; gap: 2.5mm; font-size: 12.5pt; margin: 4mm 0 1.8mm; }
+  .chip { width: 7mm; height: 7mm; border: var(--ps-outline); border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; font-size: 10.5pt; flex: none; }
+  .c-mint { background: var(--ps-mint); } .c-lav { background: var(--ps-lavender); }
+  .c-peach { background: var(--ps-peach); } .c-butter { background: var(--ps-butter); }
+  p { margin: 0 0 1.5mm; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+  .step { border: var(--ps-outline); border-radius: 10px; padding: 2.5mm 3mm 3mm; font-size: 8.4pt; line-height: 1.34; }
+  .step b.n { display: block; font-size: 13pt; line-height: 1; }
+  .step b.t { display: block; font-size: 10pt; margin: 1mm 0 1mm; }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; border: var(--ps-outline); border-radius: var(--ps-radius); overflow: hidden; font-size: 8.4pt; }
+  th, td { text-align: left; vertical-align: top; padding: 1.5mm 2.5mm; border-bottom: 1px solid var(--ps-lavender); }
+  th + th, td + td { border-left: 1px solid var(--ps-lavender); }
+  thead th { background: var(--ps-peach); border-bottom: var(--ps-outline); }
+  tbody tr:nth-child(odd) td { background: var(--ps-white); }
+  tbody tr:nth-child(even) td { background: var(--ps-peach-tint); }
+  tbody tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 700; width: 31mm; white-space: nowrap; }
+  td:nth-child(2) { width: 52mm; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  ul { margin: 0; padding-left: 4.5mm; }
+  li { margin-bottom: 1mm; }
+  .callout { border: var(--ps-outline); border-radius: var(--ps-radius); background: var(--ps-mint-tint); padding: 2.5mm 3.5mm; }
+  .callout h3 { margin: 0 0 1mm; font-size: 9.8pt; }
+  .callout ul { padding-left: 4.5mm; }
+  .tag { display: inline-block; font-size: 7.6pt; font-weight: 700; border: 1.5px solid var(--ps-navy); border-radius: 999px; padding: 0 2mm; background: var(--ps-butter-tint); margin-left: 1mm; vertical-align: 1px; }
+
+  .status { margin-top: 2mm; color: var(--ps-muted); font-size: 8.4pt; }
+  footer { position: absolute; left: 15mm; right: 15mm; bottom: 6mm; border-top: 1.5px dotted var(--ps-lavender); padding-top: 2.5mm; display: flex; align-items: center; gap: 3mm; color: var(--ps-muted); font-size: 8pt; }
+  footer span { flex: 1; }
+  footer img { width: 14px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="stripe"><i></i><i></i><i></i></div>
+
+  <header class="top"><img src="../../.claude/skills/poolside-brand/assets/pooly.svg" alt="">Poolside</header>
+
+  <section class="hero">
+    <div class="text">
+      <p class="eyebrow">The autonomous LP agent for NEAR</p>
+      <h1>Poolside</h1>
+      <p class="pitch">Follow a private LP strategy, and prove the agent did what it promised.</p>
+      <span class="pill">Agent-run &nbsp;*&nbsp; Private rules &nbsp;*&nbsp; Checkable at close</span>
+    </div>
+    <div class="art">
+      <div class="blob"></div>
+      <img class="pooly" src="../../.claude/skills/poolside-brand/assets/pooly.svg" alt="Pooly, the Poolside mascot">
+      <svg class="spark" style="left:-3mm;top:6mm;width:8mm" viewBox="0 0 20 20"><path d="M10 0 C11 7 13 9 20 10 C13 11 11 13 10 20 C9 13 7 11 0 10 C7 9 9 7 10 0Z" fill="#FFE9A0" stroke="#2B2D5B" stroke-width="1.2"/></svg>
+      <svg class="spark" style="right:-4mm;top:2mm;width:5.5mm" viewBox="0 0 20 20"><path d="M10 0 C11 7 13 9 20 10 C13 11 11 13 10 20 C9 13 7 11 0 10 C7 9 9 7 10 0Z" fill="#B9A6F5" stroke="#2B2D5B" stroke-width="1.4"/></svg>
+      <svg class="spark" style="right:-6mm;top:26mm;width:6.5mm" viewBox="0 0 20 20"><path d="M10 0 C11 7 13 9 20 10 C13 11 11 13 10 20 C9 13 7 11 0 10 C7 9 9 7 10 0Z" fill="#FFC9B5" stroke="#2B2D5B" stroke-width="1.3"/></svg>
+      <svg class="spark" style="left:0;top:33mm;width:5mm" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5" fill="#E8F5FF" stroke="#2B2D5B" stroke-width="1.5"/><circle cx="7" cy="7" r="2" fill="#fff"/></svg>
+    </div>
+  </section>
+
+  <h2><span class="chip c-mint">1</span>What Poolside on NEAR is</h2>
+  <p>Poolside is an autonomous liquidity agent for Rhea pools on NEAR. A creator writes a strategy as a set of rules, and the agent runs it from a strategy wallet: it sets ranges, rebalances, collects fees and closes positions. Followers can join from any chain through NEAR Intents.</p>
+  <p>The rules stay private while the strategy runs, but its profit and loss is public. A follower can buy a viewing key to see the rules early, and at close anyone can check that the agent kept to them.</p>
+
+  <h2><span class="chip c-lav">2</span>How it works</h2>
+  <div class="steps">
+    <div class="step c-mint"><b class="n">1</b><b class="t">Create</b>The creator writes rules in a fixed format: pool, range width, rebalance trigger, take profit, stop loss and close. Their hash goes on-chain.</div>
+    <div class="step c-lav"><b class="n">2</b><b class="t">Follow</b>A follower buys a viewing key to see the rules and position while the strategy runs, then joins it or mirrors it from their own wallet.</div>
+    <div class="step c-peach"><b class="n">3</b><b class="t">Run</b>The agent acts through a key that can only call the strategy contract. The contract refuses any action outside the public limits.</div>
+    <div class="step c-butter"><b class="n">4</b><b class="t">Close and check</b>The creator closes, the fee split settles on a NEAR contract, and the check page marks each agent action as matching the rules or not.</div>
+  </div>
+
+  <h2><span class="chip c-peach">3</span>Who sees what</h2>
+  <table>
+    <thead><tr><th>What</th><th>Who can see it</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>The rules</td><td>Creator, agent, key holders; all at close</td><td>A hash goes on-chain at creation. Rules are revealed at close.</td></tr>
+      <tr><td>Profit and loss</td><td>Everyone, while it runs</td><td>Results are public from day one, not only after close.</td></tr>
+      <tr><td>The pool position</td><td>Everyone</td><td>Rhea positions are public, tied to the strategy wallet.</td></tr>
+      <tr><td>Agent actions</td><td>Everyone, at close</td><td>The check page replays each action. No wallet needed.</td></tr>
+      <tr><td>Source of funds</td><td>Hidden where supported</td><td>Confidential Intents, only where NEAR confirms it is live.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two">
+    <div>
+      <h2><span class="chip c-butter">4</span>Built on NEAR</h2>
+      <ul>
+        <li><b>Strategy contract</b> holds positions, enforces the public limits, tracks joiners and settles the fee split.</li>
+        <li><b>Access key</b> lets the agent call only that contract, so a limit cannot be widened from outside.</li>
+        <li><b>NEAR Intents</b> brings funds in and out from any chain.</li>
+        <li><b>NEAR's private AI</b> for attested agent decisions <span class="tag">being confirmed</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2><span class="chip c-mint">5</span>What we claim</h2>
+      <div class="callout">
+        <h3>We claim</h3>
+        <ul><li>Rules that are committed, private until close or until a key is bought, and checkable afterwards.</li></ul>
+        <h3 style="margin-top:2mm">We do not claim</h3>
+        <ul>
+          <li>That the agent makes money, or hidden pool positions, or full anonymity.</li>
+          <li>That a viewing key cannot be copied or passed on.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="status">In development for the NEAR hackathon, November 2026. The fee split between creators, joiners and Poolside is being finalised and will be shown in exact amounts.</p>
+
+  <footer><span>Poolside - autonomous LP agent + private strategy marketplace on NEAR</span><b style="color:var(--ps-navy)">1</b><img src="../../.claude/skills/poolside-brand/assets/pooly.svg" alt=""></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+{
+ "rules": {
+  "close_after_s": 432000,
+  "pool": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1|wrap.near|100",
+  "quote_token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+  "range": {
+   "centre": "mid",
+   "width_bps": 800
+  },
+  "salt": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+  "stop_loss_bps": 1000,
+  "take_profit_bps": 300,
+  "version": 1
+ },
+ "rules_hash": "5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba",
+ "reference_record": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+ "reference_hash": "fdb62073fbbcc50da393c774935afaf87285824e77b2bdb599375c67198165cd",
+ "chain": {
+  "zero": "0000000000000000000000000000000000000000000000000000000000000000",
+  "first": "66df1b934cd5768ce8daab3956193acfd2bd34527d55970aa151d86d39621508",
+  "second": "ba59693d91676760d1d9fc6a23216bff97709d7e66518e9fa70f4bdab555d4d9"
+ },
+ "refuse": [
+  {
+   "name": "trailing newline",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}\n",
+   "message": "not the canonical form"
+  },
+  {
+   "name": "leading BOM",
+   "text": "﻿{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": null
+  },
+  {
+   "name": "spaces",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\": 1}",
+   "message": "not the canonical form"
+  },
+  {
+   "name": "escaped key",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"bl\\u006fck\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "not the canonical form"
+  },
+  {
+   "name": "duplicate key",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1,\"version\":1}",
+   "message": null
+  },
+  {
+   "name": "extra top field",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1,\"x\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "version 2",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":2}",
+   "message": "version must be 1"
+  },
+  {
+   "name": "uppercase rules hash",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5E5A263D268C580BCF8214750F62C706434B83AACE8C13422C44194542DD76BA\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "rules_hash must be 64 lowercase hex"
+  },
+  {
+   "name": "unknown decision",
+   "text": "{\"decision\":{\"kind\":\"rebalance\"},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "decision kind must be"
+  },
+  {
+   "name": "close with a bad reason",
+   "text": "{\"decision\":{\"kind\":\"close\",\"reason\":\"panic\"},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "close reason must be"
+  },
+  {
+   "name": "close with an extra key",
+   "text": "{\"decision\":{\"kind\":\"close\",\"reason\":\"time\",\"x\":1},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "close without a reason",
+   "text": "{\"decision\":{\"kind\":\"close\"},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "hold with an extra key",
+   "text": "{\"decision\":{\"kind\":\"hold\",\"left\":1},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "open without right",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "open with a string point",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":\"-8400\",\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "left must be an integer"
+  },
+  {
+   "name": "open with left at right",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-7600,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "left must be below right"
+  },
+  {
+   "name": "open with left above right",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-7600,\"right\":-8400},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "left must be below right"
+  },
+  {
+   "name": "open with a point past the bound",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":800001},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "right must be within the point bounds"
+  },
+  {
+   "name": "decision is an array",
+   "text": "{\"decision\":[],\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "decision must be an object"
+  },
+  {
+   "name": "decision is null",
+   "text": "{\"decision\":null,\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "decision must be an object"
+  },
+  {
+   "name": "amount with a leading zero",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"01000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "principal must be a decimal u128 string"
+  },
+  {
+   "name": "amount as a number",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":1000000,\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "principal must be a decimal u128 string"
+  },
+  {
+   "name": "amount one past u128",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"340282366920938463463374607431768211456\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "principal must be a decimal u128 string"
+  },
+  {
+   "name": "holdings missing a member",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "fees with an extra member",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\",\"x\":\"1\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "position with the wrong keys",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":{\"left\":1},\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "exactly the keys"
+  },
+  {
+   "name": "closedBy unknown",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":\"panic\",\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "closedBy must be"
+  },
+  {
+   "name": "point past the bound",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":800001,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": "point must be an integer"
+  },
+  {
+   "name": "block a fraction",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100.5,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": null
+  },
+  {
+   "name": "block an exponent",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":1e2,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": null
+  },
+  {
+   "name": "negative zero",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":-0,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"strategy-1.near\",\"version\":1}",
+   "message": null
+  },
+  {
+   "name": "not an object",
+   "text": "[]",
+   "message": "record must be an object"
+  },
+  {
+   "name": "not JSON",
+   "text": "x",
+   "message": null
+  },
+  {
+   "name": "strategy not an account id",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"strategy\":\"Not An Account\",\"version\":1}",
+   "message": "strategy must be a NEAR account id"
+  },
+  {
+   "name": "missing strategy",
+   "text": "{\"decision\":{\"kind\":\"open\",\"left\":-8400,\"right\":-7600},\"rules_hash\":\"5e5a263d268c580bcf8214750f62c706434b83aace8c13422c44194542dd76ba\",\"state\":{\"block\":100,\"closedBy\":null,\"confirmFromBlock\":null,\"fees\":{\"base\":\"0\",\"quote\":\"0\"},\"holdings\":{\"base\":\"0\",\"quote\":\"1000000\"},\"nowS\":1000,\"point\":-8000,\"position\":null,\"principal\":\"1000000\",\"startedAtS\":900,\"valuationPoint\":-8000},\"version\":1}",
+   "message": "exactly the keys"
+  }
+ ]
+}

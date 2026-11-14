@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "preserve",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"],
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "declaration": false,
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["src", "test", "next-env.d.ts"]
+}

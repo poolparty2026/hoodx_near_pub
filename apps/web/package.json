@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "@poolside/rules": "workspace:*",
+    "@poolside/seal": "workspace:*",
+    "near-api-js": "7.5.3",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "fast-check": "4.10.2",
+    "jsdom": "27.0.0",
+    "tailwindcss": "4.3.5",
+    "typescript": "7.0.2",
+    "vitest": "4.1.12"
+  }
+}

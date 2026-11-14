@@ -1,0 +1,66 @@
+{
+ "_provenance": "Recorded 14 Nov 2026 by a temporary unit test (not committed) in contracts/strategy/src/contract/tests_keys.rs at origin/lead/consolidated: serde_json of get_key_params, get_key_sale, get_config (started() fixture) before a sale, and get_key_params, get_key_sale, get_key_sales after buy(bob.near, PK). Regenerate the same way when the contract's output changes. The Released and Refunded sales are in contract-wire-released-refunded.json, dumped from the contract wasm in the sandbox (see its provenance).",
+ "before_sale": {
+  "get_key_params": {
+   "key_price": "100000000000000000000000",
+   "key_delivery_window_ns": "3600000000000",
+   "max_key_sales": 20,
+   "sold": 0,
+   "deliverer": "deliverer.near",
+   "escrow_total": "0",
+   "near_owed_total": "0"
+  },
+  "get_key_sale": null,
+  "get_config": {
+   "creator": "creator.near",
+   "agent": "agent.near",
+   "deliverer": "deliverer.near",
+   "platform_account": "platform.near",
+   "quote_token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+   "dcl_contract": "dclv2.ref-labs.near",
+   "rules_hash": "abababababababababababababababababababababababababababababababab",
+   "rules_ciphertext": "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB",
+   "platform_bps": 500,
+   "key_price": "100000000000000000000000",
+   "max_key_sales": 20,
+   "key_delivery_window_ns": "3600000000000",
+   "start_deadline_ns": "1700086400000000000",
+   "run_end_ns": "1700518400000000000",
+   "exit_grace_ns": "86400000000000",
+   "platform_claim_window_ns": "172800000000000",
+   "stale_after_blocks": "1000",
+   "stale_cooldown_blocks": "1500",
+   "dcl_storage": "2000000000000000000000000",
+   "attested": false
+  }
+ },
+ "after_buy": {
+  "get_key_params": {
+   "key_price": "100000000000000000000000",
+   "key_delivery_window_ns": "3600000000000",
+   "max_key_sales": 20,
+   "sold": 1,
+   "deliverer": "deliverer.near",
+   "escrow_total": "100000000000000000000000",
+   "near_owed_total": "0"
+  },
+  "get_key_sale": {
+   "buyer": "bob.near",
+   "buyer_pubkey": "0101010101010101010101010101010101010101010101010101010101010101",
+   "state": "Escrowed",
+   "bought_at_ns": "1700000000000000007",
+   "price": "100000000000000000000000",
+   "sealed_key": null
+  },
+  "get_key_sales": [
+   {
+    "buyer": "bob.near",
+    "buyer_pubkey": "0101010101010101010101010101010101010101010101010101010101010101",
+    "state": "Escrowed",
+    "bought_at_ns": "1700000000000000007",
+    "price": "100000000000000000000000",
+    "sealed_key": null
+   }
+  ]
+ }
+}
