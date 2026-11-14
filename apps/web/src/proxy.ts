@@ -13,7 +13,8 @@ export function proxy(request: NextRequest) {
   const nonce = btoa(crypto.randomUUID());
   const csp = [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    // 'wasm-unsafe-eval' lets libsodium (the sealed box, WebAssembly) compile its module; it does not allow eval() or new Function.
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'wasm-unsafe-eval'`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data:",
     // Allowed connections: the fixed RPC origin, the two testnet RPC origins from lib/keys/rpcs.ts, and the records hosts from RECORDS_BASE_URLS (none by default).

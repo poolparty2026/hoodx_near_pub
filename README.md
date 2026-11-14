@@ -38,6 +38,11 @@ The verdict for a run is its worst row: Not matching, then Unverifiable, then Ma
 
 **Not checked in this version** (also shown on the page): that the deployed code is a reproducible build of the audited commit, that the account was created in a single creating transaction, that principal equals the sum of the funding events, that the fee split followed the stated percentages, refusals by public limits beyond showing them as context, the decision-log chain when records carry no chain heads, the creation block and the agent's history (the recorded runs supply a stand-in creation block and stand-in pins), and anything that happens between two samples.
 
+## See it live
+
+- Site: https://hoodx.space (the check page on hand-made runs and sandbox recordings, and `/journey`, a guided simulation of the whole process on recorded sandbox data: no live strategy, no real tokens).
+- Code: https://github.com/poolparty2026/hoodx_near_pub
+
 ## Try it with no funds
 
 You do not need a wallet, tokens or a NEAR account.
@@ -91,7 +96,7 @@ Decision records are published only after the reveal (from the strategy's closin
 
 ## Name
 
-"hoodx on NEAR" has not been cleared as a name; no trademark check has been done.
+"hoodx" is cleared as the product name (D62). The product was called Poolside until 14 November 2026; some internal identifiers keep the old name (see `docs/NAMING.md`).
 
 ## Layout and process
 

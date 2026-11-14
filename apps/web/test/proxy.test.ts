@@ -13,7 +13,8 @@ describe("the Content Security Policy (defence in depth for EC-W04)", () => {
     const c = csp();
     const script = c.split("; ").find((d) => d.startsWith("script-src"))!;
     expect(script).not.toContain("unsafe-inline");
-    expect(script).not.toContain("unsafe-eval");
+    expect(script).not.toContain("'unsafe-eval'");
+    expect(script).toContain("'wasm-unsafe-eval'"); // libsodium needs WebAssembly compilation; not JS eval
     expect(c).toContain("frame-ancestors 'none'");
     expect(c).toContain("object-src 'none'");
     expect(c).toContain("base-uri 'none'");

@@ -1,0 +1,44 @@
+{
+ "strategyId": "strategy-1.test.near",
+ "lastBlock": 29391,
+ "rulesHash": "5305d16d4187d171527a0b45215ecbf9f78b602de4e0c05081aff899115950ef",
+ "rulesText": "{\"close_after_s\":3600,\"pool\":\"usdc.test.near|wrap.test.near|100\",\"quote_token\":\"usdc.test.near\",\"range\":{\"centre\":\"mid\",\"width_bps\":1000},\"salt\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\",\"stop_loss_bps\":1000,\"take_profit_bps\":500,\"version\":1}",
+ "keyPriceYocto": "100000000000000000000000",
+ "maxKeySales": 20,
+ "keyWindowNs": "3600000000000",
+ "principal": "500000000",
+ "startedAtNs": "1794617497017860165",
+ "closedAtNs": "1794621147468657248",
+ "actions": [
+  {
+   "index": "0",
+   "kind": "Swap",
+   "result": "Ok",
+   "callBlock": "182",
+   "resultBlock": "188",
+   "observedPoint": 401312,
+   "leftPoint": 400812,
+   "rightPoint": 401812
+  },
+  {
+   "index": "1",
+   "kind": "Open",
+   "result": "Ok",
+   "callBlock": "314",
+   "resultBlock": "324",
+   "observedPoint": 401301,
+   "leftPoint": 400812,
+   "rightPoint": 401812
+  },
+  {
+   "index": "2",
+   "kind": "ClosePosition",
+   "result": "Ok",
+   "callBlock": "29148",
+   "resultBlock": "29154",
+   "observedPoint": 401301,
+   "leftPoint": 400812,
+   "rightPoint": 401812
+  }
+ ]
+}

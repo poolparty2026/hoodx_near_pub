@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <img src="/hoodx-wordmark-on-dark.svg" alt="hoodx" height={36} style={{ height: 36, width: "auto" }} />
           </picture>
           <span className="text-lg font-bold tracking-tight">on NEAR</span>
+          <nav className="ml-auto text-sm"><a className="underline" href="/journey">The whole process</a></nav>
         </header>
         <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pb-16">{children}</main>
         <footer className="mx-auto max-w-3xl px-4 pb-8 text-sm text-muted">
